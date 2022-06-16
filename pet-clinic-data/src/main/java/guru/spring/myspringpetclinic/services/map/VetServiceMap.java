@@ -4,9 +4,11 @@ import guru.spring.myspringpetclinic.model.Pet;
 import guru.spring.myspringpetclinic.model.Vet;
 import guru.spring.myspringpetclinic.services.CrudService;
 import guru.spring.myspringpetclinic.services.VetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {

@@ -1,8 +1,6 @@
 package guru.spring.myspringpetclinic.services.map;
 
-import guru.spring.myspringpetclinic.model.Pet;
 import guru.spring.myspringpetclinic.model.Vet;
-import guru.spring.myspringpetclinic.services.CrudService;
 import guru.spring.myspringpetclinic.services.VetService;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +20,7 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
-        return super.save(object, object.getId());
+        return super.save(object);
     }
 
     @Override

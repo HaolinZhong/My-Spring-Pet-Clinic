@@ -5,6 +5,6 @@ import guru.spring.myspringpetclinic.services.map.AbstractMapService;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface SpecialitiesService extends CrudService<Speciality, Long> {
+public interface SpecialityService extends CrudService<Speciality, Long> {
 
 }

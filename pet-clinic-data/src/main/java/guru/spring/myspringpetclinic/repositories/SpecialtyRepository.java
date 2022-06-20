@@ -1,7 +1,7 @@
 package guru.spring.myspringpetclinic.repositories;
 
 import guru.spring.myspringpetclinic.model.Specialty;
-import guru.spring.myspringpetclinic.services.CrudService;
+import org.springframework.data.repository.CrudRepository;
 
-public interface SpecialtyRepository extends CrudService<Specialty, Long> {
+public interface SpecialtyRepository extends CrudRepository<Specialty, Long> {
 }

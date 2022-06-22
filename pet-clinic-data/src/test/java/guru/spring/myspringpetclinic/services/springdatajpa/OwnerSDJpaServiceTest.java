@@ -32,7 +32,7 @@ class OwnerSDJpaServiceTest {
     @InjectMocks
     OwnerSDJpaService service;
 
-    final String LAST_NAME = "Smith";
+    public static final String LAST_NAME = "Smith";
 
     Owner returnOwner;
 
@@ -47,7 +47,7 @@ class OwnerSDJpaServiceTest {
         when(ownerRepository.findByLastName(any())).thenReturn(returnOwner);
         Owner smith = service.findByLastName(LAST_NAME);
         assertEquals(LAST_NAME, smith.getLastName());
-        verify(ownerRepository.findByLastName(any()));
+        verify(ownerRepository).findByLastName(any());
     }
 
     @Test

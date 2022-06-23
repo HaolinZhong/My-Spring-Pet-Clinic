@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
-import javax.swing.text.html.Option;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping("/owners")
 @Controller
@@ -42,8 +40,7 @@ public class OwnerController {
     @GetMapping
     public String processFindForm(Owner owner, BindingResult result, Model model) {
         if (owner.getLastName() == null) owner.setLastName("");
-        List<Owner> results = new ArrayList<>();
-        ownerService.findAllByLastNameLike(owner.getLastName()).forEach(results::add);
+        List<Owner> results = ownerService.findAllByLastNameLike(owner.getLastName());
 
         if (results.isEmpty()) {
             result.rejectValue("lastName", "notFound", "not found");

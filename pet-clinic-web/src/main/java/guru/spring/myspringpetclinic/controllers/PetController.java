@@ -16,7 +16,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/owners/{ownerId}")
@@ -86,20 +85,9 @@ public class PetController {
             model.addAttribute("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
-            Optional<Pet> foundPetOptional = owner.getPets().stream().filter(p -> p.getId() == pet.getId()).findFirst();
-
-            if(foundPetOptional.isPresent()) {
-                Pet foundPet = foundPetOptional.get();
-                foundPet.setName(pet.getName());
-                foundPet.setBirthDate(pet.getBirthDate());
-                foundPet.setVisits(pet.getVisits());
-                foundPet.setPetType(pet.getPetType());
-                foundPet.setOwner(owner);
-                ownerService.save(owner);
-                return "redirect:/owners/" + owner.getId();
-            } else {
-                throw new RuntimeException("No pet found with id: " + pet.getId());
-            }
+            owner.getPets().add(pet);
+            petService.save(pet);
+            return "redirect:/owners/" + owner.getId();
         }
     }
 }

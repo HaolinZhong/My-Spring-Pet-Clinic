@@ -1,7 +1,6 @@
 package guru.spring.myspringpetclinic.model;
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -40,7 +39,6 @@ public class Pet extends BaseEntity {
     private Owner owner;
 
     @Column
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
